@@ -55,26 +55,7 @@ nav ul a.on{color:var(--blue)}
 .btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
 .fade-up{opacity:0;transform:translateY(16px);animation:up .8s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.5s + var(--d,0)*.12s)}
 @keyframes up{to{opacity:1;transform:none}}
-.curve{margin:56px 0 0;padding:28px 28px 20px;background:var(--card);border:1px solid var(--line);border-radius:16px}
-.curve header{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline;padding:0}
-.curve h2{font-size:1.2rem}
-.curve p.cap{font-size:.88rem;color:var(--ink-2);max-width:60ch}
-.curve svg{width:100%;height:auto;margin-top:10px;display:block}
-.curve .axis,.curve .grid{stroke:var(--line);stroke-width:1}
-.curve .grid{stroke-dasharray:3 5}
-.curve text{fill:var(--ink-2);font-family:var(--sans);font-size:11px}
-.curve .ocv{fill:none;stroke:var(--blue);stroke-width:2.6;stroke-linecap:round;stroke-dasharray:1200;stroke-dashoffset:1200}
-.curve.in .ocv{animation:draw 2.8s cubic-bezier(.6,.1,.2,1) forwards}
-.curve .tag,.curve .dot2{opacity:0}
-.curve.in .tag,.curve.in .dot2{animation:fade .8s 2.6s forwards}
-.curve .dot2{fill:var(--blue)}
-.curve .pulse{fill:none;stroke:var(--blue);opacity:0}
-.curve.in .pulse{animation:pulse 2s 2.8s ease-out infinite}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes fade{to{opacity:1}}
-@keyframes pulse{from{r:5;opacity:.8}to{r:20;opacity:0}}
-.readout{display:flex;gap:28px;flex-wrap:wrap;margin-top:6px;font-size:.88rem;color:var(--ink-2)}
-.readout b{color:var(--ink);font-weight:600}
+
 section{padding:84px 0 0}
 section>.wrap>h2{font-size:clamp(1.8rem,3.4vw,2.4rem);margin-bottom:34px}
 .about{display:grid;grid-template-columns:1fr 1fr;gap:48px}
@@ -127,7 +108,7 @@ blockquote{margin-top:22px;padding:4px 0 4px 18px;border-left:3px solid var(--bl
 .ps b{color:var(--ink);font-weight:600}
 .fig{margin-top:16px;display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
 .fig figure{margin:0}
-.fig img{display:block;width:auto;height:auto;max-width:100%;max-height:230px;border-radius:10px;border:1px solid var(--line);background:#fff}
+.fig img{display:block;width:auto;height:auto;max-width:100%;max-height:230px;border-radius:10px;border:1px solid var(--line);background:#fff;object-fit:contain;}
 .fig figcaption{margin-top:5px;font-size:.78rem;color:var(--ink-2)}
 .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
 .skills h3{font-size:1.08rem;margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid var(--line)}
@@ -150,7 +131,6 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 @media (prefers-reduced-motion:reduce){
 *{animation:none!important;transition:none!important}
 .hero h1 .w span,.fade-up,.avatar,.rv,.curve .tag,.curve .dot2{opacity:1;transform:none}
-.curve .ocv{stroke-dashoffset:0}
 #glow{display:none}
 }
 </style>
@@ -167,8 +147,8 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 <div class="avatar" id="avatar">
 <div class="ring"></div>
 <div class="ph">
-  <!-- REPLACED PLACEHOLDER WITH A WORKING IMAGE -->
-  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=520&auto=format&fit=crop" alt="Portrait of Akarsh Namathota Srinivas" width="520" height="520">
+  <!-- 1. Replace profile.jpg with your actual image file -->
+  <img src="profile.jpg" alt="Portrait of Akarsh Namathota Srinivas" width="520" height="520">
 </div>
 <span class="dot" title="Graduating Dec 2026"></span>
 </div>
@@ -182,28 +162,13 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 </div>
 </div>
 </div>
-<figure class="curve rv" id="curve" aria-label="Open-circuit voltage versus state of charge for a prismatic LMFP cell, showing a voltage step near 50% state of charge">
-<header><h2>From my battery modeling work</h2>
-<p class="cap">Open-circuit voltage against state of charge for a prismatic LMFP cell, fitted from pulse test data. The two plateaus and the step between them sit near 50% SOC.</p></header>
-<svg viewBox="0 0 900 250" role="img" aria-hidden="true">
-<line class="axis" x1="50" y1="210" x2="880" y2="210"/><line class="axis" x1="50" y1="20" x2="50" y2="210"/>
-<line class="grid" x1="50" y1="60" x2="880" y2="60"/><line class="grid" x1="50" y1="115" x2="880" y2="115"/><line class="grid" x1="50" y1="165" x2="880" y2="165"/>
-<line class="grid" x1="465" y1="20" x2="465" y2="210" style="stroke:var(--blue);opacity:.5"/>
-<text x="50" y="230">0%</text><text x="258" y="230">25%</text><text x="458" y="230">50%</text><text x="665" y="230">75%</text><text x="862" y="230">100%</text>
-<text x="8" y="115" transform="rotate(-90 14 115)" text-anchor="middle">OCV</text>
-<path class="ocv" d="M52 196 C 62 150, 78 140, 110 136 C 200 128, 330 124, 430 122 C 452 121, 458 100, 468 86 C 480 70, 490 66, 520 64 C 620 60, 760 58, 880 46"/>
-<circle class="pulse" cx="465" cy="91" r="5"/><circle class="dot2" cx="465" cy="91" r="5"/>
-<g class="tag"><text x="478" y="112">voltage step near 50% SOC</text></g>
-</svg>
-<div class="readout"><span>Model <b>two-RC equivalent circuit</b></span><span>Fast time constants <b>10–60 s</b></span><span>Slow time constants <b>100–500 s</b></span></div>
-</figure>
 </div></header>
 
 <section id="about"><div class="wrap">
 <h2 class="rv">About</h2>
 <div class="about">
 <div class="rv">
-<p>I build and validate the software that makes hybrid and conventional powertrains behave. That has meant calibrating NOx dosing for heavy-duty diesel at Bosch, validating a parallel hybrid truck at PACCAR, and running combustion diagnostics on a 13L engine at the University of Michigan.</p>
+<p>I build and validate the software that makes hybrid and conventional powertrains behave. That has meant calibrating NOx dosing for heavy-duty diesel at Bosch and validating a parallel hybrid truck at PACCAR.</p>
 <p>I started on the mechanical side with Formula Student suspension and brake design, and that background still shapes how I think about test fixtures, tolerances and what hardware can actually do.</p>
 <blockquote>“I excel at solving complex problems through critical thinking. I take ownership, driving impactful solutions. Collaboration fuels my innovation, ensuring successful outcomes.”</blockquote>
 </div>
@@ -212,7 +177,6 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 <li><span>Degree</span><span>MSE Mechanical Engineering, U-M (Dec 2026)</span></li>
 <li><span>Graduate GPA</span><span>3.96 / 4.00</span></li>
 <li><span>Focus</span><span>Powertrain integration, controls, batteries</span></li>
-<li><span>Safety training</span><span>High voltage (NFPA 70E), machine shop</span></li>
 </ul>
 </div>
 <div class="trio rv">
@@ -231,17 +195,6 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 <section id="experience"><div class="wrap">
 <h2 class="rv">Experience</h2>
 <div class="timeline" id="tl"><span class="fill" id="fill"></span>
-
-<article class="job rv">
-<div class="meta">Jan 2026 to present · Ann Arbor, MI</div>
-<h3>Research Assistant</h3>
-<div class="org">Walter E. Lay Automotive Laboratory, University of Michigan</div>
-<ul>
-<li>Diagnosed transient combustion anomalies during durability cycles using live AVL IndiCom pressure traces on a 13L diesel engine.</li>
-<li>Wrote online calculation scripts for IMEP, mass fraction burned and knock limits, <b>speeding up the combustion calibration timeline by 15%</b>.</li>
-<li>Automated EPA Tier 4 compliance checks for NOx and particulate matter with AVL iGEM test sequences.</li>
-<li>Used Design of Experiments across speed, load and injection settings to map NOx and soot behavior.</li>
-</ul></article>
 
 <article class="job rv">
 <div class="meta">May 2026 to Aug 2026 · Mount Vernon, WA</div>
@@ -298,25 +251,12 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 <div class="projects">
 
 <div class="proj wide rv">
-<h3>Battery state-of-health estimation</h3>
-<p>Implemented an online SOH framework from the literature on the Oxford Battery Degradation Dataset. Each cell was parameterized with an equivalent circuit, and the resulting resistance trends trained a 20-node extreme learning machine.</p>
-<p class="result"><b>1.10% RMSE</b>, 0.97% MAE, R² of 0.96, with 1.5 ms training time.</p>
-<div class="tools"><span>MATLAB</span><span>Equivalent circuit models</span><span>Machine learning</span></div>
-</div>
-
-<div class="proj wide rv">
 <div class="kick">PACCAR</div>
 <h3>Prismatic LMFP cell characterization equipment</h3>
 <div class="ps">
 <div><strong>Problem</strong>Required repeatable electrical and thermal characterization of a <b>148 Ah prismatic LMFP cell</b> across SOC under high-current pulse conditions, while capturing constrained swelling. The setup needed repeatable mechanical loading and synchronized force, voltage, current and temperature measurements.</div>
 <div><strong>Solution</strong>Designed, assembled and commissioned a rigid, load-cell-based cell fixture inside a climate chamber, with load cells for clamping force, displacement sensors for cell-thickness change, and thermocouples across the cell face and near the terminals. Integrated these with battery-cycler voltage and current acquisition during Hybrid Pulse Power Characterization (HPPC), and processed charge/discharge and HPPC data in MATLAB.</div>
 <div><strong>Achievement</strong>Reduced fixture weight by <b>35%</b> and cost by <b>40%</b> versus previous configurations. Built an integrated electro-mechanical characterization workflow with SOC-dependent model parameters, including a two-RC equivalent-circuit fit that shows a voltage transition near <b>50% SOC</b> and time constants of <b>10–60 s</b> and <b>100–500 s</b>.</div>
-</div>
-<div class="fig">
-  <figure>
-    <img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400&auto=format&fit=crop" alt="Render of the load-cell fixture clamping a prismatic cell inside a thermal chamber">
-    <figcaption>Load-cell fixture concept in the thermal chamber</figcaption>
-  </figure>
 </div>
 <div class="tools"><span>Fixture design</span><span>Load cells</span><span>HPPC</span><span>DAQ</span><span>MATLAB</span><span>Two-RC ECM</span></div>
 </div>
@@ -331,8 +271,14 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 </div>
 <div class="fig">
   <figure>
-    <img loading="lazy" src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400&auto=format&fit=crop" alt="Bosch Denoxtronic 2.2 system diagram">
-    <figcaption>Denoxtronic 2.2 system. Graphic courtesy of Robert Bosch GmbH.</figcaption>
+    <!-- 3. Replace dnox.jpg with your DNOx SCR slide -->
+    <img loading="lazy" src="dnox.jpg" alt="Denoxtronic system and SCR catalytic converter">
+    <figcaption>Denoxtronic system and SCR</figcaption>
+  </figure>
+  <figure>
+    <!-- 4. Replace dnox3d.jpg with your 3D CAD image -->
+    <img loading="lazy" src="dnox3d.jpg" alt="Bosch DNOx 3D CAD model">
+    <figcaption>DNOx 3D assembly</figcaption>
   </figure>
 </div>
 <div class="tools"><span>DNOx 2.2</span><span>PTC heaters</span><span>Thermal imaging</span><span>Climatic chamber</span><span>PicoScope</span><span>CAN</span><span>FEA topology optimization</span></div>
@@ -348,8 +294,9 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 </div>
 <div class="fig">
   <figure>
-    <img loading="lazy" src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=400&auto=format&fit=crop" alt="Fuel-cell system diagram with exhaust heater, temperature sensors and control unit">
-    <figcaption>Heater and sensor architecture</figcaption>
+    <!-- 2. Replace exhaust.jpg with your Proposed Problem/Devised solution slide -->
+    <img loading="lazy" src="exhaust.jpg" alt="Proposed problem and devised solution diagram">
+    <figcaption>Proposed problem and devised solution</figcaption>
   </figure>
 </div>
 <div class="tools"><span>PEM fuel cell</span><span>PTC elements</span><span>Thermal sizing</span><span>Sensor architecture</span><span>Creo</span></div>
@@ -365,8 +312,9 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 </div>
 <div class="fig">
   <figure>
-    <img loading="lazy" src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?q=80&w=400&auto=format&fit=crop" alt="Water separator top view with inlet, outlet, flow-directing rib and level sensor position">
-    <figcaption>Separator layout and flow path</figcaption>
+    <!-- 5. Replace cfd.jpg with your CFD simulation slide -->
+    <img loading="lazy" src="cfd.jpg" alt="CFD simulation of droplet-wall interaction">
+    <figcaption>CFD droplet-wall interaction</figcaption>
   </figure>
 </div>
 <div class="tools"><span>Test rig design</span><span>Pressure transducers</span><span>Flow meters</span><span>Orientation study</span></div>
@@ -382,36 +330,12 @@ nav ul{gap:16px}nav ul li:nth-child(n+4){display:none}
 </div>
 <div class="fig">
   <figure>
-    <img loading="lazy" src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=400&auto=format&fit=crop" alt="P2 hybrid architecture: ICE, clutch, gearbox, battery, inverter and motor on the rear axle">
+    <!-- 6. Replace phev.jpg with your P2 architecture slide -->
+    <img loading="lazy" src="phev.jpg" alt="P2 hybrid architecture diagram">
     <figcaption>P2 hybrid architecture</figcaption>
   </figure>
 </div>
 <div class="tools"><span>AVL Navigator</span><span>AVL PUMA</span><span>DVP&amp;R</span><span>Dyno automation</span><span>RCA</span></div>
-</div>
-
-<div class="proj wide rv">
-<div class="kick">Test approach · NACS J3400</div>
-<h3>High-voltage distribution, from charge port to HV components</h3>
-<div class="ps">
-<div><strong>01 · Understand the power path</strong><b>AC charge:</b> charge port → OBC → charge contactors → battery pack. <b>DC fast charge:</b> charge port → HV connectors and cables → battery charging path (OBC bypassed). <b>Power out:</b> battery → contactors and pre-charge → HVJB, busbars and HV harness → inverter, DC/DC and HV loads.</div>
-<div><strong>02 · Where I would focus the test</strong>HVIL continuity and interlock status, safe contactor sequencing including pre-charge voltage convergence, IMD detection, voltage drop and contact resistance across busbar joints, connectors and other high-current interfaces, and checks for localized heating or intermittent faults during vibration and thermal tests. Connectors need an integrated thermal sensor and must pass bench tests that track contact temperature under load, with contact temperature kept below 100°C and temperature gradients forced during sensor validation.</div>
-<div><strong>03 · What I bring as a test engineer</strong>Fixture design and validation test plans for regulation compliance and performance requirements (for example, J3400 DC charging contactors unintentionally closed during AC charging, connecting AC to DC). PicoScope and CANalyzer fault injection with hardware root-cause troubleshooting. DVP&amp;Rs, repeatable procedures, and MATLAB and Python data analysis.</div>
-</div>
-<div class="fig">
-  <figure>
-    <img loading="lazy" src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=400&auto=format&fit=crop" alt="Orange HV charge-port harness with a NACS J3400 connector">
-    <figcaption>NACS J3400 charge port harness</figcaption>
-  </figure>
-  <figure>
-    <img loading="lazy" src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=400&auto=format&fit=crop" alt="HV connector interface with two orange terminals">
-    <figcaption>HV connector interface</figcaption>
-  </figure>
-  <figure>
-    <img loading="lazy" src="https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=400&auto=format&fit=crop" alt="HV contactor assembly">
-    <figcaption>HV contactor</figcaption>
-  </figure>
-</div>
-<div class="tools"><span>HVIL</span><span>Pre-charge</span><span>IMD</span><span>Contact resistance</span><span>PicoScope</span><span>CANalyzer</span><span>Fault injection</span></div>
 </div>
 
 </div>
